@@ -2,31 +2,72 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hi, welcome thanks for clicking...</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>@rfldno</title>
+    <meta name="description" content="Victor Tabuni — Project Manager · Builder · Software Development">
+    <meta name="theme-color" content="#efe9df">
+    <link rel="icon" href="assets/avatar.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Figtree:wght@400;500;600&family=Pixelify+Sans:wght@500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <img src="victor-tabuni.png" alt="profile" class="profile-pic">
-        <h1>@rfldno</h1>
-        <p>Project Manager · Builder · Software Development</p>
+    <main class="page">
+        <div class="stack">
 
-        <div class="level">
-            <h2>Level: 7/10</h2>
-            <div class="progress-bar">
-                <div class="progress" style="width: 12%;"></div>
+            <header class="profile">
+                <picture>
+                    <source srcset="assets/avatar.webp" type="image/webp">
+                    <img src="assets/avatar.png" alt="Victor Tabuni" class="avatar" width="288" height="288">
+                </picture>
+                <div class="profile-text">
+                    <h1>@rfldno</h1>
+                    <p>Project Manager · Builder · Software Development</p>
+                </div>
+            </header>
+
+            <!-- Level: fill the first N pips with class "on" and update the label + aria-valuenow -->
+            <div class="level">
+                <div class="level-label"><span>LEVEL 7/10</span><span class="muted">XP to 8 →</span></div>
+                <div class="pips" role="progressbar" aria-label="Level" aria-valuemin="0" aria-valuemax="10" aria-valuenow="7">
+                    <div class="pip on"></div><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div>
+                    <div class="pip on"></div><div class="pip on"></div><div class="pip"></div><div class="pip"></div><div class="pip"></div>
+                </div>
             </div>
-        </div>
 
-        <div class="links">
-            <a href="https://github.com/rfldn0" target="_blank" rel="noopener noreferrer">Github</a>
-            <a href="https://www.linkedin.com/in/victor-rifaldino-tabuni-14856628b/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-            <a href="https://myportfolio-vtabuni.vercel.app/" target="_blank" rel="noopener noreferrer">My Site</a>
-        </div>
-    </div>
+            <div class="feature">
+                <a href="https://myportfolio-vtabuni.vercel.app/" target="_blank" rel="noopener noreferrer" tabindex="-1" aria-hidden="true" class="feature-media">
+                    <picture>
+                        <source srcset="assets/site-preview.webp" type="image/webp">
+                        <img src="assets/site-preview.jpg" alt="" width="1100" height="561" loading="lazy">
+                    </picture>
+                </a>
+                <a href="https://myportfolio-vtabuni.vercel.app/" target="_blank" rel="noopener noreferrer" class="feature-link">
+                    <div class="feature-text">
+                        <span class="feature-title">My Site</span>
+                        <span class="muted">Portfolio · vercel.app</span>
+                    </div>
+                    <span aria-hidden="true" class="arrow">→</span>
+                </a>
+            </div>
 
-    <script src="script.js">
-    </script>
+            <section class="quests">
+                <h2>SIDE QUESTS</h2>
+                <div class="quest-grid">
+                    <a href="https://github.com/rfldn0" target="_blank" rel="noopener noreferrer" class="quest">
+                        <span class="quest-title">GitHub<span aria-hidden="true">↗</span></span>
+                        <span class="muted">code log</span>
+                    </a>
+                    <a href="https://www.linkedin.com/in/victor-rifaldino-tabuni-14856628b/" target="_blank" rel="noopener noreferrer" class="quest">
+                        <span class="quest-title">LinkedIn<span aria-hidden="true">↗</span></span>
+                        <span class="muted">career log</span>
+                    </a>
+                </div>
+            </section>
+
+            <footer>© 2026 rfldno</footer>
+        </div>
+    </main>
 </body>
 </html>

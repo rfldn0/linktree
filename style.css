@@ -1,83 +1,273 @@
+:root {
+    --ink: #161412;
+    --ink-soft: #3b3631;
+    --muted: #5c554d;
+    --paper: #efe9df;
+    --card: #fff;
+    --card-hover: #f6f1e8;
+    --accent: #d98b4f; /* level pip fill — alternates: #6f8f5a, #4f7bd9 */
+    --display: 'Bricolage Grotesque', sans-serif;
+    --body: 'Figtree', sans-serif;
+    --pixel: 'Pixelify Sans', monospace;
+}
+
+html {
+    -webkit-text-size-adjust: 100%;
+}
+
 body {
-    background: url('background-image.jpg') no-repeat center center fixed; /* Add your background image */
-    background-size: cover;
-    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--body);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+}
+
+* {
+    -webkit-tap-highlight-color: transparent;
+}
+
+a {
+    color: var(--ink);
+}
+
+a:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 3px;
+}
+
+.muted {
+    color: var(--muted);
+}
+
+.page {
+    min-height: 100vh;
+    min-height: 100dvh;
+    box-sizing: border-box;
     display: flex;
     justify-content: center;
+    align-items: flex-start;
+    padding:
+        max(clamp(32px, 8vw, 88px), env(safe-area-inset-top))
+        max(clamp(16px, 5vw, 32px), env(safe-area-inset-right))
+        max(40px, env(safe-area-inset-bottom))
+        max(clamp(16px, 5vw, 32px), env(safe-area-inset-left));
+}
+
+.stack {
+    width: 100%;
+    max-width: clamp(320px, 90vw, 460px);
+    display: flex;
+    flex-direction: column;
+    gap: clamp(24px, 6vw, 36px);
+}
+
+/* Profile */
+.profile {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: clamp(12px, 4vw, 20px);
     align-items: center;
-    height: 100vh;
-    margin: 0;
 }
 
-.container {
-    background: rgba(255, 255, 255, 0.9);
-    padding: 30px;
-    border-radius: 20px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-    text-align: center;
-    width: 300px;
-}
-
-.profile-pic {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin: 0 auto 15px;
+.avatar {
     display: block;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: clamp(64px, 20vw, 96px);
+    height: clamp(64px, 20vw, 96px);
+    border-radius: 50%;
+    border: 2px solid var(--ink);
+    box-shadow: 3px 3px 0 var(--ink);
+    object-fit: cover;
+    background: var(--card);
+}
+
+.profile-text {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 0;
 }
 
 h1 {
-    margin: 10px 0 5px;
-    font-size: 22px;
+    margin: 0;
+    overflow-wrap: anywhere;
+    font: 800 clamp(26px, 8vw, 42px)/1 var(--display);
+    letter-spacing: -0.02em;
 }
 
-p {
-    color: gray;
-    font-size: 14px;
-    margin-bottom: 20px;
+.profile-text p {
+    margin: 0;
+    font-size: clamp(15px, 4vw, 17px);
+    line-height: 1.45;
+    color: var(--ink-soft);
+    text-wrap: pretty;
 }
 
+/* Level */
 .level {
-    margin: 20px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
 }
 
-.progress-bar {
-    background: #e0e0e0;
-    border-radius: 10px;
+.level-label,
+.quests h2 {
+    font: 600 16px/1 var(--pixel);
+    letter-spacing: 0.04em;
+}
+
+.level-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.pips {
+    display: grid;
+    grid-template-columns: repeat(10, minmax(0, 1fr));
+    gap: clamp(2px, 1vw, 5px);
+}
+
+.pip {
+    height: 14px;
+    box-sizing: border-box;
+    border: 2px solid var(--ink);
+    border-radius: 2px;
+    background: var(--card);
+}
+
+.pip.on {
+    background: var(--accent);
+}
+
+/* Featured link */
+.feature {
+    border: 2px solid var(--ink);
+    border-radius: 14px;
+    background: var(--card);
+    box-shadow: 4px 4px 0 var(--ink);
     overflow: hidden;
-    height: 10px;
-    width: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
-.progress {
-    background: #4caf50;
-    height: 100%;
-    transition: width 0.3s ease;
-}
-
-.links a {
+.feature-media {
     display: block;
-    margin: 10px 0;
-    background: #111827;
-    color: white;
+    aspect-ratio: 2576 / 1314;
+    border-bottom: 2px solid var(--ink);
+    background: #0b1220;
+    overflow: hidden;
+}
+
+.feature-media img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: left top;
+}
+
+.feature-link {
     text-decoration: none;
-    padding: 12px;
+    min-height: 64px;
+    box-sizing: border-box;
+    padding: 14px 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    transition: background 0.15s;
+}
+
+.feature-link:hover {
+    background: var(--card-hover);
+}
+
+.feature-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.feature-text .muted {
+    font-size: 15px;
+    line-height: 1.4;
+}
+
+.feature-title {
+    font: 700 22px/1.15 var(--display);
+}
+
+.arrow {
+    font-size: 24px;
+    line-height: 1;
+}
+
+/* Side quests */
+.quests {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.quests h2 {
+    margin: 0;
+}
+
+.quest-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 12px;
+}
+
+.quest {
+    text-decoration: none;
+    background: var(--card);
+    border: 2px solid var(--ink);
     border-radius: 10px;
-    transition: background 0.3s ease, transform 0.2s ease;
-    position: relative;
+    box-shadow: 3px 3px 0 var(--ink);
+    min-height: 64px;
+    box-sizing: border-box;
+    padding: 12px 14px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2px;
+    transition: transform 0.15s, box-shadow 0.15s;
 }
 
-.links a:hover {
-    background: #4caf50;
-    color: white;
-    transform: scale(1.05);
+.quest:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 5px 5px 0 var(--ink);
 }
 
-@media (max-width: 600px) {
-    .profile-pic {
-        width: 90px;
-        height: 90px;
+.quest:active {
+    transform: translate(3px, 3px);
+    box-shadow: 0 0 0 var(--ink);
+}
+
+.quest-title {
+    font: 600 18px/1.2 var(--body);
+    display: flex;
+    justify-content: space-between;
+}
+
+.quest .muted {
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+footer {
+    text-align: center;
+    font-size: 14px;
+    color: var(--muted);
+    padding-top: 8px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .quest,
+    .feature-link {
+        transition: none;
     }
 }
